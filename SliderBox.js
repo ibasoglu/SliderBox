@@ -3,6 +3,8 @@
     $.fn.SliderBox = function (options) {
     	var element = this;
 
+    	element.css({position: "relative"});
+
     	var settings = $.extend({
             lBoxWidth: 310,
             lBoxHeigth: 310,
