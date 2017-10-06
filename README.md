@@ -1,6 +1,6 @@
-"# SliderBox"
+# SliderBox
 
-
+```javascript
 $('#sliderbox').SliderBox({
 	lBoxWidth: 305,
 	lBoxHeigth: 305,
@@ -9,3 +9,4 @@ $('#sliderbox').SliderBox({
 	divider: 5,
 	time: 1000
 });
+```
