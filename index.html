@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Slider Box</title>
+	</head>
+	<body>
+		<div id="sliderbox">
+                <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 1"></div>
+               <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 2"></div>
+               <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 3"></div>
+               <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 4"></div>
+               <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 5"></div>
+               <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 6"></div>
+               <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 7"></div>
+               <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 8"></div>
+               <div data-image="http://resimdiyari.com/upload/2014/06/18/20140618121439-338f255e.jpg" data-url="https://github.com/ibasoglu" data-background-color="#1D459D", data-title="Title 9"></div>
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="SliderBox.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#sliderbox').SliderBox({
+					lBoxWidth: 305,
+		            lBoxHeigth: 305,
+		            BoxWidth: 150,
+		            BoxHeigth: 150,
+		            divider: 5,
+		            time: 1000
+				});
+			});
+		</script>
+	</body>
+</html>
