@@ -10,3 +10,5 @@ $('#sliderbox').SliderBox({
 	time: 1000
 });
 ```
+
+![SliderBox](https://raw.githubusercontent.com/ibasoglu/SliderBox/master/sliderbox.gif)
