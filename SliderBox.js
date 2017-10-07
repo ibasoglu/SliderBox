@@ -3,15 +3,14 @@
     $.fn.SliderBox = function (options) {
     	var element = this;
 
-    	element.css({position: "relative"});
-
     	var settings = $.extend({
             lBoxWidth: 310,
             lBoxHeigth: 310,
             BoxWidth: 150,
             BoxHeigth: 150,
             divider: 10,
-            time: 5000
+            time: 5000,
+            onlyDestop: true
         }, options );
 
 
@@ -25,13 +24,16 @@
     			top = settings.BoxHeigth + settings.divider;
     		}
 
-    		if(i==0)
+    		if(i==0){
     			$(this).css({width: settings.lBoxWidth + "px", height: settings.lBoxHeigth + "px", top: "0px", left: "0px"});
-    		else
+                $(this).addClass("sbLargeBox");
+            }
+    		else{
     			$(this).css({width: settings.BoxWidth + "px", height: settings.BoxHeigth + "px", left: (left + settings.divider) + "px", top: top + "px"});
+                $(this).addClass("sbSmallBox");
+            }
 
     		$(this).css({
-    			position: "absolute",
     			background: "url(" + $(this).data("image") + ")"
     		});
 
@@ -42,25 +44,25 @@
 
     		var a = $("<a></a>").attr("href", $(this).data("url")).css({"text-decoration": "none"});
 
-    		var div = $("<div></div>").css({
-    			position: "relative",
-    			display: "table",
-    			width: "100%",
-    			height: "100%"
-    		});
+            var divbg = $("<div></div>").addClass("bgcolor").css({"background-color":$(this).data("bg-color"), width:"100%", height: "100%"});
 
-    		var span = $("<span></span>").text($(this).data("title")).css({
-    			color: "white", 
-    			display: "table-cell",
-    			"vertical-align": "middle",
-    			"text-align": "center",
-    			font: "20px"});
+    		var div = $("<div></div>").addClass("container");
+
+    		var span = $("<span></span>").text($(this).data("title")).addClass("title");
 
     		div.append(span);
+
+            a.append(divbg);
 
     		a.append(div);
 
     		$(this).append(a);
+
+            div.on("mouseenter", function () {
+                divbg.css('opacity', '0.8');
+            }).on("mouseleave", function () {
+                divbg.css('opacity', '0.5');
+            });
 
     		i++;
     	});
@@ -73,11 +75,15 @@
     			if(id == 0){
     				$(this).animate({width: settings.BoxWidth + "px", height: settings.BoxHeigth + "px", left: (settings.lBoxWidth + settings.divider), top: (settings.BoxHeigth + settings.divider) + "px"}, "slow");
     				$(this).data("id", parseInt(count/2) + 1);
+                    $(this).removeClass("sbLargeBox");
+                    $(this).addClass("sbSmallBox");
     			}
     			else if(id == 1){
     				$(this).css({left: "0px", top: "0px", width: "0px", height: "0px"});
     				$(this).animate({width: settings.lBoxWidth + "px", height: settings.lBoxHeigth + "px"}, "slow");
     				$(this).data("id", 0);
+                    $(this).removeClass("sbSmallBox");
+                    $(this).addClass("sbLargeBox");
     			}else if(id > count/2 && id != count){
     				$(this).animate({left: (parseInt($(this).css("left")) + settings.BoxWidth + settings.divider) + "px"}, "slow");
     				$(this).data("id", id + 1);
@@ -93,9 +99,21 @@
     		});
     	};
 
-    	setInterval(function(){
-    		ChangeBox();
-    	}, settings.time);
+        
+
+        isMobileDevice = (/iphone|ipad|Android|webOS|iPod|BlackBerry|Windows Phone|ZuneWP7/gi).test(navigator.appVersion);
+
+        if(settings.onlyDestop){
+            if(!isMobileDevice){
+                setInterval(function(){
+                    ChangeBox();
+                }, settings.time);
+            }
+        }else{
+        	setInterval(function(){
+        		ChangeBox();
+        	}, settings.time);
+        }
 
     }
 }(jQuery));
