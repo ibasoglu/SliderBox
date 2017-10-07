@@ -70,7 +70,6 @@
     	var ChangeBox = function(){
     		element.children("div").each(function(){
     			var id = parseInt($(this).data("id"));
-    			console.log(id);
 
     			if(id == 0){
     				$(this).animate({width: settings.BoxWidth + "px", height: settings.BoxHeigth + "px", left: (settings.lBoxWidth + settings.divider), top: (settings.BoxHeigth + settings.divider) + "px"}, "slow");
@@ -99,21 +98,25 @@
     		});
     	};
 
-        
-
-        isMobileDevice = (/iphone|ipad|Android|webOS|iPod|BlackBerry|Windows Phone|ZuneWP7/gi).test(navigator.appVersion);
-
-        if(settings.onlyDestop){
-            if(!isMobileDevice){
-                setInterval(function(){
-                    ChangeBox();
-                }, settings.time);
-            }
-        }else{
-        	setInterval(function(){
-        		ChangeBox();
-        	}, settings.time);
+        var isMobileDevice = function(){
+            return (/iphone|ipad|Android|webOS|iPod|BlackBerry|Windows Phone|ZuneWP7/gi).test(navigator.appVersion);
         }
+
+        var autopager;
+        var startAutopager = function(){
+            if(settings.onlyDestop)
+                if(isMobileDevice())
+                    return;
+            autopager = setInterval(ChangeBox, settings.time);
+        }
+        var stopAutopager = function() {
+            window.clearInterval(autopager);
+        }
+
+        window.addEventListener('focus', startAutopager);
+        window.addEventListener('blur', stopAutopager);
+
+        startAutopager();
 
     }
 }(jQuery));
