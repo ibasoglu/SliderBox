@@ -7,7 +7,8 @@ $('#sliderbox').SliderBox({
 	BoxWidth: 150,
 	BoxHeigth: 150,
 	divider: 5,
-	time: 1000
+	time: 1000,
+	onlyDestop: true
 });
 ```
 
