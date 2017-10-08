@@ -1,3 +1,9 @@
+/*
+    author: ibasoglu
+    date: 06.10.17
+    web: www.ibasoglu.com
+*/
+
 (function ( $ ) {
 
     $.fn.SliderBox = function (options) {
